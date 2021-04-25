@@ -1,0 +1,102 @@
+.logo 
+{
+    width: 100px;
+    height: 100px;
+    background-color: #232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.howspend
+{
+    width: 400px;
+    height: 80px;
+    background: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #000;
+}
+
+.expenditure
+{
+    display: flex;
+}
+
+.income
+{
+    width: 400px;
+    height: 600px;
+    border: 2px solid #000;
+}
+
+.expenses
+{
+    width: 400px;
+    height: 600px;
+    border: 2px solid #000;
+    margin-left: -2px;
+}
+
+.txtIncome
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.txtExpenses
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#testForm
+{
+    display: flex;
+    align-items: center;
+
+}
+
+#testFormIncome
+{
+    /* width: 30px; */
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#testFormValue
+{
+    margin-right: 20px;
+}
+
+#submit
+{
+    margin-right: 20px;
+    height: 25px;
+}
+
+#testFormExpanses
+{
+    /* width: 30px; */
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/* #testFormValue
+{
+    margin-right: 20px;
+}
+
+#submit
+{
+    margin-right: 20px;
+    height: 25px;
+} */
