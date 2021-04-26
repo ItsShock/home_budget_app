@@ -58,7 +58,14 @@ body
     font-weight: bold;
 }
 
-#testForm
+#testForm1
+{
+    display: flex;
+    align-items: center;
+
+}
+
+#testForm2
 {
     display: flex;
     align-items: center;
@@ -85,18 +92,30 @@ body
 
 #testFormExpanses
 {
-    /* width: 30px; */
+
     margin-right: 20px;
     margin-left: 20px;
 }
 
-/* #testFormValue
+
+ul:not(.browser-default)>li
+{
+    list-style-type:disc;
+    margin-left: 25px;
+}
+
+ul:not(.browser-default)
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+#btnEdit
+{
+    margin-left: 100px;
+}
+
+#btnRemove
 {
     margin-right: 20px;
 }
-
-#submit
-{
-    margin-right: 20px;
-    height: 25px;
-} */
