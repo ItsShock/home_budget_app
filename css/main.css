@@ -16,7 +16,7 @@ body
     align-items: center;
 }
 
-.howspend
+.howSpend
 {
     width: 400px;
     height: 80px;
@@ -58,14 +58,14 @@ body
     font-weight: bold;
 }
 
-#testForm1
+#testFormIncomeMain
 {
     display: flex;
     align-items: center;
 
 }
 
-#testForm2
+#testFormExpenseMain
 {
     display: flex;
     align-items: center;
@@ -90,24 +90,18 @@ body
     height: 25px;
 }
 
-#testFormExpanses
-{
-
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
 
 ul:not(.browser-default)>li
 {
     list-style-type:disc;
     margin-left: 25px;
+    margin-bottom: 25px;
 }
 
 ul:not(.browser-default)
 {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 #btnEdit
@@ -116,6 +110,23 @@ ul:not(.browser-default)
 }
 
 #btnRemove
+{
+    margin-right: 20px;
+}
+
+#expensesList
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#testFormExpenses
+{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#testFormValueExpense
 {
     margin-right: 20px;
 }

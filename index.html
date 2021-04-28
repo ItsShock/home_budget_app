@@ -10,11 +10,13 @@
 </head>
 <body>
     <div class="logo">Logo</div>
-    <div class="howspend"></div>
+    <div id="howSpend">
+      
+    </div>
     <div class="expenditure">
         <div class="income">
             <p class="txtIncome">Przychody</p>
-            <form id="testForm1">
+            <form id="testFormIncomeMain">
                 <input
                   id="testFormIncome"
                   type="text"
@@ -29,29 +31,32 @@
                 />
                 <input id="submit" type="submit" value="Dodaj" />
               </form>
-              <ul id="incomes">
+              <ul id="incomesList">
                 
               </ul>
-              <h1 id="sum1"></h1>
-              
+              <p id="incomes"><p>
         </div>
         <div class="expenses">
             <p class="txtExpenses">Wydatki</p>
-            <form id="testForm2">
+            <form id="testFormExpenseMain">
                 <input
-                  id="testFormExpanses"
+                  id="testFormExpenses"
                   type="text"
                   placeholder="Nazwa wydatku"
                   value=""
                 />
                 <input
-                  id="testFormValue"
+                  id="testFormValueExpense"
                   type="text"
                   placeholder="Kwota"
                   value=""
                 />
                 <input id="submit" type="submit" value="Dodaj" />
               </form>
+              <ul id="expensesList">
+
+              </ul>
+              <p id="expenses"></p>
         </div>
     </div>
     <script src="js/main.js"></script>
