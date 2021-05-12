@@ -16,14 +16,19 @@ body
     align-items: center;
 }
 
-.howSpend
+#howSpend
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 400px;
     height: 80px;
     background: #fff;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 22px;
 }
 
 .expenditure
@@ -36,6 +41,7 @@ body
     width: 400px;
     height: 600px;
     border: 2px solid #000;
+    border-radius: 6px;
 }
 
 .expenses
@@ -44,16 +50,21 @@ body
     height: 600px;
     border: 2px solid #000;
     margin-left: -2px;
+    border-radius: 6px;
 }
 
 .txtIncome
 {
+    display: flex;
+    justify-content: center;
     font-size: 20px;
     font-weight: bold;
 }
 
 .txtExpenses
-{
+{   
+    display: flex;
+    justify-content: center;
     font-size: 20px;
     font-weight: bold;
 }
@@ -69,6 +80,7 @@ body
 {
     display: flex;
     align-items: center;
+    justify-items: center;
 
 }
 
@@ -77,41 +89,63 @@ body
     /* width: 30px; */
     margin-right: 20px;
     margin-left: 20px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;    
 }
 
 #testFormValue
 {
     margin-right: 20px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
 }
 
 #submit
 {
+    margin-top: -10px;
     margin-right: 20px;
-    height: 25px;
+    border-radius: 6px;
+    border: 2px solid #000;
+    height: 48px;
+    font-size: 14px;
 }
 
 
 ul:not(.browser-default)>li
 {
-    list-style-type:disc;
+    list-style-type: disc;
     margin-left: 25px;
     margin-bottom: 25px;
 }
 
 ul:not(.browser-default)
 {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 #btnEdit
 {
-    margin-left: 100px;
+    margin-left: 121px;
+    border-radius: 6px;
+    border: 2px solid #000;
+    height: 22px;
+    font-size: 14px;
+    margin-right: 10px;
 }
 
-#btnRemove
+#btnRemoveIncome
 {
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    border-radius: 6px;
+    border: 2px solid #000;
+    height: 22px;
+    font-size: 14px;
+    width: 54.18px;
 }
 
 #expensesList
@@ -124,9 +158,138 @@ ul:not(.browser-default)
 {
     margin-right: 20px;
     margin-left: 20px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
 }
 
 #testFormValueExpense
 {
     margin-right: 20px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* .income #incomesList
+{
+    display: flex;
+} */
+
+.liListIncome
+{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.liListExpense
+{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+input:not([type])
+{
+    margin-right: 20px ;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    width: 127.61px;
+    margin-left: -4px;
+}
+
+
+.inputValue
+{
+    margin-left: -1px !important;
+    /* margin-right: 16px !important; */
+}
+
+.liListExpense
+{
+    display: flex;
+}
+
+.inputNameExpense
+{
+    margin-right: 20px !important;
+}
+
+.inputValueExpense
+{
+    margin-right: 20px !important;
+}
+
+.btnSave
+{   
+    background-color: #fff;
+    border: none;
+    color: #00ff00;
+    font-size: 20px;
+    
+}
+
+.btnCancel
+{
+    background-color: #fff;
+    border: none;
+    color: rgb(255, 0, 0);
+    font-size: 20px;
+}
+
+#incomesList
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btnRemoveExpense
+{
+    border-radius: 6px;
+    border: 2px solid #000;
+    height: 22px;
+    font-size: 14px;
+    width: 54.18px;
+}
+
+#incomes
+{
+    font-size: 16px; 
+    position: absolute;
+    top: 80%;
+    margin-left: 20px;
+}
+
+#expenses
+{
+    font-size: 16px; 
+    position: absolute;
+    top: 80%;
+    margin-left: 20px;
+}
+
+.lineIncome
+{
+    border: 1px solid #000;
+    height: 2px;
+    width: 368px;
+    margin-left: 30px;
+    margin-top: 25px;
+
+}
+
+.lineExpense
+{
+    border: 1px solid #000;
+    height: 2px;
+    width: 368px;
+    margin-right: 30px;
+    margin-top: 25px;
+
 }
