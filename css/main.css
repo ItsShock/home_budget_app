@@ -1,8 +1,38 @@
+@media screen and (max-width: 800px)
+{
+    .expenditure 
+    {
+        flex-direction: column;
+    }
+
+    div .expenses
+    {
+        
+        margin-left: 0 !important;
+    }
+
+    #expenses
+    {
+        margin-top: 620px !important;
+    }
+
+    .lineIncome
+    {
+        width: 400px !important;
+        margin-left: -2px !important;
+    }
+
+    .lineExpense
+    {
+        width: 400px !important;
+        margin-left: -2px !important;
+    }
+}
+
 .logo 
 {
     width: 100px;
     height: 100px;
-    background-color: #232;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,13 +116,12 @@ body
 
 #testFormIncome
 {
-    /* width: 30px; */
     margin-right: 20px;
     margin-left: 20px;
     border: 2px solid #000;
     border-radius: 6px;
     font-size: 14px;
-    text-align: center;    
+    text-align: center;   
 }
 
 #testFormValue
@@ -124,8 +153,8 @@ ul:not(.browser-default)>li
 
 ul:not(.browser-default)
 {
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
 }
 
 #btnEdit
@@ -140,7 +169,6 @@ ul:not(.browser-default)
 
 #btnRemoveIncome
 {
-    /* margin-right: 20px; */
     border-radius: 6px;
     border: 2px solid #000;
     height: 22px;
@@ -173,21 +201,26 @@ ul:not(.browser-default)
     text-align: center;
 }
 
-/* .income #incomesList
+#incomesList
 {
     display: flex;
-} */
+    align-items: center;
+}
+
+#expensesList
+{
+    display: flex;
+    align-items: center;
+}
 
 .liListIncome
 {
-    display: flex;
     align-items: center;
     white-space: nowrap;
 }
 
 .liListExpense
 {
-    display: flex;
     align-items: center;
     white-space: nowrap;
 }
@@ -201,18 +234,12 @@ input:not([type])
     text-align: center;
     width: 127.61px;
     margin-left: -4px;
+    height: 22px;
 }
-
 
 .inputValue
 {
     margin-left: -1px !important;
-    /* margin-right: 16px !important; */
-}
-
-.liListExpense
-{
-    display: flex;
 }
 
 .inputNameExpense
@@ -231,7 +258,20 @@ input:not([type])
     border: none;
     color: #00ff00;
     font-size: 20px;
-    
+    padding: 0 0;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.btnSaveExpense
+{   
+    background-color: #fff;
+    border: none;
+    color: #00ff00;
+    font-size: 20px;
+    padding: 0 0;
+    margin-right: 5px;
+    font-weight: bold;
 }
 
 .btnCancel
@@ -240,6 +280,20 @@ input:not([type])
     border: none;
     color: rgb(255, 0, 0);
     font-size: 20px;
+    padding: 0 0;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.btnCancelExpense
+{
+    background-color: #fff;
+    border: none;
+    color: rgb(255, 0, 0);
+    font-size: 20px;
+    padding: 0 0;
+    margin-left: 5px;
+    font-weight: bold;
 }
 
 #incomesList

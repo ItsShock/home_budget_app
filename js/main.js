@@ -1,15 +1,12 @@
 var wallet = 0;
 var incomes = 0;
 var expenses = 0;
-var uids = [];
 
 document.addEventListener("DOMContentLoaded", (e) => {
     const incomesList = document.querySelector("#incomesList");
     const incomesSum = document.querySelector("#incomes")
     const expensesList = document.querySelector("#expensesList");
     const expensesSum = document.querySelector("#expenses")
-    // const btnRemoveIncome = document.querySelector("#btnRemoveIncome")
-    // const btnRemoveExpense = document.querySelector("#btnRemoveExpense")
     var testFormIncomeMain = document.querySelector("#testFormIncomeMain");
     const testFormIncome = document.querySelector("#testFormIncome");
     const testFormValue = document.querySelector("#testFormValue");
@@ -19,40 +16,37 @@ document.addEventListener("DOMContentLoaded", (e) => {
     expensesSum.innerHTML = "Suma wydatków: " + expenses + " zł";
     howSpendMoney.innerHTML = "Można wydać: " +  wallet + " zł";
 
-
-    // TODO  create function which upadte wallet incomes and expenses
+    function updateWallet()
+    {
+        wallet = incomes - expenses;
+        howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
+    }
 
     testFormIncomeMain.addEventListener("submit", (e) => {
         e.preventDefault();
 
         let income = {
-            przychod: testFormIncome.value,
-            kwotaIncome: testFormValue.value,
+            title: testFormIncome.value,
+            incomeValue: testFormValue.value,
         };
         
-        let li = document.createElement("li");
-        li.innerText = `${income.przychod} - ${income.kwotaIncome} zł`;
-        console.log(li);
-        li.dataset.name = income.przychod;
-        li.dataset.amount = income.kwotaIncome;
-        li.classList = "liListIncome";
-        incomesList.appendChild(li);
+        let incomesListPoint = document.createElement("li");
+        incomesListPoint.innerText = `${income.title}: ${income.incomeValue} zł`;
+        incomesListPoint.dataset.name = income.title;
+        incomesListPoint.dataset.amount = income.incomeValue;
+        incomesListPoint.classList = "liListIncome";
+        incomesList.appendChild(incomesListPoint);
 
-        var btnEdit = document.createElement("button");
-        btnEdit.innerText = "Edytuj";
-        btnEdit.id = "btnEdit";
-        li.appendChild(btnEdit);
+        var btnEditIncome = document.createElement("button");
+        btnEditIncome.innerText = "Edytuj";
+        btnEditIncome.id = "btnEdit";
+        incomesListPoint.appendChild(btnEditIncome);
         
         var btnRemoveIncome = document.createElement("button");
         btnRemoveIncome.id = "btnRemoveIncome";
         btnRemoveIncome.innerText = "Usuń";
-        li.appendChild(btnRemoveIncome);
+        incomesListPoint.appendChild(btnRemoveIncome);
         
-        
-        incomes += parseFloat(income.kwotaIncome);
-        incomesSum.innerHTML = "Suma przychodów: " + incomes + " zł";
-        wallet = incomes - expenses;
-        howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
         
         testFormIncome.value = "";
         testFormValue.value = "";
@@ -62,86 +56,83 @@ document.addEventListener("DOMContentLoaded", (e) => {
             btnRemoveIncome.setAttribute('id', uid);
             var elementToBeDeleted = document.getElementById(uid);
             elementToBeDeleted.remove();
-            uids.push(uid);
         }
-
-
-        btnEdit.addEventListener("click", (e) => {
-            li.innerHTML = "";
+        
+        btnEditIncome.addEventListener("click", (e) => {
+            incomesListPoint.innerHTML = "";
             const inputName = document.createElement("input");
             inputName.className = "inputName";
             const inputValue = document.createElement("input");
             inputValue.className = "inputValue";
-            const btnSave = document.createElement("button");
-            btnSave.classList = "btnSave";
-            btnSave.innerText = "V";
-            const btnCancel = document.createElement("button");
-            btnCancel.classList = "btnCancel";
-            btnCancel.innerText = "X";
-            inputName.value = li.dataset.name;
-            inputValue.value = li.dataset.amount;
-            li.appendChild(inputName);
-            li.appendChild(inputValue);
-            li.appendChild(btnSave);
-            li.appendChild(btnCancel);
-
-            btnSave.addEventListener("click", (e) =>{
-                li.innerText = `${inputName.value} - ${inputValue.value} zł`;
-                li.appendChild(btnEdit);
-                li.appendChild(btnRemoveIncome);
-                incomes -= li.dataset.amount - inputValue.value;
+            const btnSaveIncome = document.createElement("button");
+            btnSaveIncome.classList = "btnSave";
+            btnSaveIncome.innerText = "V";
+            const btnCancelIncome = document.createElement("button");
+            btnCancelIncome.classList = "btnCancel";
+            btnCancelIncome.innerText = "X";
+            inputName.value = incomesListPoint.dataset.name;
+            inputValue.value = incomesListPoint.dataset.amount;
+            incomesListPoint.appendChild(inputName);
+            incomesListPoint.appendChild(inputValue);
+            incomesListPoint.appendChild(btnSaveIncome);
+            incomesListPoint.appendChild(btnCancelIncome);
+            
+            btnSaveIncome.addEventListener("click", (e) =>{
+                incomesListPoint.innerText = `${inputName.value}: ${inputValue.value} zł`;
+                incomesListPoint.appendChild(btnEditIncome);
+                incomesListPoint.appendChild(btnRemoveIncome);
+                incomes -= incomesListPoint.dataset.amount - inputValue.value;
                 incomesSum.innerHTML = "Suma przychodów: " + incomes + " zł";
-                wallet = incomes - expenses;
-                howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
-                li.dataset.name = inputName.value;
-                li.dataset.amount = inputValue.value;
+                updateWallet();
+                incomesListPoint.dataset.name = inputName.value;
+                incomesListPoint.dataset.amount = inputValue.value;
             });
-
-            btnCancel.addEventListener("click", (e) =>{
-                li.innerText = `${income.przychod} - ${income.kwotaIncome} zł`;
-                li.appendChild(btnEdit);
-                li.appendChild(btnRemoveIncome);
+            
+            btnCancelIncome.addEventListener("click", (e) =>{
+                incomesListPoint.innerText = `${income.title} - ${income.incomeValue} zł`;
+                incomesListPoint.appendChild(btnEditIncome);
+                incomesListPoint.appendChild(btnRemoveIncome);
             });
-
+            
         });
-
+        
         btnRemoveIncome.addEventListener("click", (e) => {
             generateUid();
-            incomes -= parseFloat(li.dataset.amount);
+            incomes -= parseFloat(incomesListPoint.dataset.amount);
             incomesSum.innerHTML = "Suma przychodów: " + incomes + " zł";
-            wallet = incomes - expenses;
-            howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
-            console.log("usunieto");
-            li.remove();
+            updateWallet();
+            incomesListPoint.remove();
         });
-    
+        
+        incomes += parseFloat(income.incomeValue);
+        incomesSum.innerHTML = "Suma przychodów: " + incomes + " zł";
+        updateWallet();
     })
-
+    
     testFormExpenseMain.addEventListener("submit", (e) => {
         e.preventDefault();
-
+        
         let expense = {
-            wydatek: testFormExpenses.value,
-            kwotaExpense: testFormValueExpense.value,
+            title: testFormExpenses.value,
+            expenseValue: testFormValueExpense.value,
         };
         
-        let li = document.createElement("li");
-        li.innerText = `${expense.wydatek} - ${expense.kwotaExpense} zł`;
-        li.dataset.name = expense.wydatek;
-        li.dataset.amount = expense.kwotaExpense;
-        li.classList = "liListExpense";
-        console.log(li);
-        expensesList.appendChild(li);
+        let expensesListPoint = document.createElement("li");
+        expensesListPoint.innerText = `${expense.title}: ${expense.expenseValue} zł`;
+        expensesListPoint.dataset.name = expense.title;
+        expensesListPoint.dataset.amount = expense.expenseValue;
+        expensesListPoint.classList = "liListExpense";
+        expensesList.appendChild(expensesListPoint);
 
         const btnEdit = document.createElement("button");
         btnEdit.innerText = "Edytuj";
         btnEdit.id = "btnEdit";
-        li.appendChild(btnEdit);
+        expensesListPoint.appendChild(btnEdit);
 
         const btnRemoveExpense = document.createElement("button");
         btnRemoveExpense.innerText = "Usuń";
         btnRemoveExpense.id = "btnRemoveExpense";
-        li.appendChild(btnRemoveExpense);
+        expensesListPoint.appendChild(btnRemoveExpense);
 
         testFormExpenses.value = "";
         testFormValueExpense.value = "";
@@ -151,59 +142,55 @@ document.addEventListener("DOMContentLoaded", (e) => {
             btnRemoveExpense.setAttribute('id', uid);
             var elementToBeDeleted = document.getElementById(uid);
             elementToBeDeleted.remove();
-            uids.push(uid);
         }
 
         btnEdit.addEventListener("click", (e) => {
-            li.innerHTML = "";
+            expensesListPoint.innerHTML = "";
             const inputNameExpense = document.createElement("input");
             inputNameExpense.className = "inputNameExpense";
             const inputValueExpense = document.createElement("input");
             inputValueExpense.className = "inputValueExpense";
             const btnSaveExpense = document.createElement("button");
             btnSaveExpense.innerText = "V";
+            btnSaveExpense.classList = "btnSaveExpense";
             const btnCancelExpense = document.createElement("button");
             btnCancelExpense.innerText = "X";
-            inputNameExpense.value = li.dataset.name;
-            inputValueExpense.value = li.dataset.amount;
-            li.appendChild(inputNameExpense);
-            li.appendChild(inputValueExpense);
-            li.appendChild(btnSaveExpense);
-            li.appendChild(btnCancelExpense);
+            btnCancelExpense.classList = "btnCancelExpense"
+            inputNameExpense.value = expensesListPoint.dataset.name;
+            inputValueExpense.value = expensesListPoint.dataset.amount;
+            expensesListPoint.appendChild(inputNameExpense);
+            expensesListPoint.appendChild(inputValueExpense);
+            expensesListPoint.appendChild(btnSaveExpense);
+            expensesListPoint.appendChild(btnCancelExpense);
 
             btnSaveExpense.addEventListener("click", (e) =>{
-                li.innerText = `${inputNameExpense.value} - ${inputValueExpense.value} zł`;
-                li.appendChild(btnEdit);
-                li.appendChild(btnRemoveExpense);
-                expenses -= li.dataset.amount - inputValueExpense.value;
+                expensesListPoint.innerText = `${inputNameExpense.value}: ${inputValueExpense.value} zł`;
+                expensesListPoint.appendChild(btnEdit);
+                expensesListPoint.appendChild(btnRemoveExpense);
+                expenses -= expensesListPoint.dataset.amount - inputValueExpense.value;
                 expensesSum.innerHTML = "Suma przychodów: " + expenses + " zł";
-                wallet = incomes - expenses;
-                howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
-                li.dataset.name = inputNameExpense.value;
-                li.dataset.amount = inputValueExpense.value;
+                updateWallet();
+                expensesListPoint.dataset.name = inputNameExpense.value;
+                expensesListPoint.dataset.amount = inputValueExpense.value;
             });
 
-            btnCancel.addEventListener("click", (e) =>{
-                li.innerText = `${income.przychod} - ${income.kwotaIncome} zł`;
-                li.appendChild(btnEdit);
-                li.appendChild(btnRemoveIncome);
+            btnCancelExpense.addEventListener("click", (e) =>{
+                expensesListPoint.innerText = `${expense.title}: ${expense.expenseValue} zł`;
+                expensesListPoint.appendChild(btnEdit);
+                expensesListPoint.appendChild(btnRemoveExpense);
             });
         });
 
         btnRemoveExpense.addEventListener("click", (e) => {
             generateUid();
-            expenses -= parseFloat(li.dataset.amount);
+            expenses -= parseFloat(expensesListPoint.dataset.amount);
             expensesSum.innerHTML = "Suma wydatków: " + expenses + " zł";
-            wallet = incomes - expenses;
-            howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
-            console.log("usunieto");
-            li.remove();
+            updateWallet();
+            expensesListPoint.remove();
         });
 
-        expenses += parseFloat(expense.kwotaExpense);
+        expenses += parseFloat(expense.expenseValue);
         expensesSum.innerHTML = "Suma wydatków: " + expenses +" zł";
-
-        wallet = incomes - expenses;
-        howSpendMoney.innerHTML = "Można wydać: " + wallet + " zł";
+        updateWallet();
     })
 });
